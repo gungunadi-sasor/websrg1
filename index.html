@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMPN 1 Soreang - Lingkungan Belajar Nyaman untuk Generasi Berprestasi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-color: #004d40; /* Hijau Tua */
+            --secondary-color: #00897b; /* Hijau Sedang */
+            --accent-color: #ffb300; /* Kuning Emas */
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --bg-light: #f4f4f4;
+            --bg-white: #ffffff;
+            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color var(--transition-speed);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color var(--transition-speed);
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .logo img:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links a {
+            padding: 10px 15px;
+            color: var(--text-dark);
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-color);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-out;
+        }
+
+        .nav-links a:hover::after {
+            transform: translateX(0);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            background-color: rgba(0, 77, 64, 0.05); /* Sedikit transparansi */
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* --- Header / Hero Section --- */
+        .header {
+            background: url("https://i.imgur.com/yTqLwlt.png") no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Overlay gelap */
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        #welcome-text, #tagline {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #welcome-text.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #tagline.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #welcome-text {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        #tagline {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color var(--transition-speed), transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background-color: #ffc107;
+            transform: translateY(-3px);
+        }
+        
+        /* --- General Section Styling --- */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* --- Section 1: Sambutan Kepala Sekolah --- */
+        #sambutan {
+            background-color: var(--bg-white);
+        }
+
+        .sambutan-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .kepsek-photo {
+            flex: 0 0 300px;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        .kepsek-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .kepsek-photo img:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 77, 64, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(0, 77, 64, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 77, 64, 0); }
+        }
+
+        .sambutan-text {
+            flex: 1;
+        }
+
+        .sambutan-text h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        /* --- Section 2: Tentang Sekolah --- */
+        #tentang {
+            background-color: #e0f2f1; /* Hijau muda pucat */
+        }
+
+        .tentang-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .tentang-card {
+            background-color: var(--bg-white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .tentang-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .tentang-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tentang-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .tentang-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid var(--accent-color);
+            transition: border-color 0.3s;
+        }
+
+        .tentang-card:hover img {
+            border-color: var(--secondary-color);
+        }
+
+        .tentang-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* --- Section 3: Profil Sekolah --- */
+        #profil-sekolah {
+            background-color: var(--bg-white);
+        }
+
+        .profil-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .profil-card {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            overflow: hidden;
+            position: relative;
+            height: 200px;
+            cursor: default;
+        }
+
+        .profil-card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 0.5s;
+        }
+        
+        .profil-card-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .profil-card:hover .profil-card-content {
+            opacity: 1;
+        }
+
+        .profil-card-content .number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            line-height: 1;
+        }
+
+        .profil-card-content .label {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        /* --- Section 4: Pembantu Kepala Sekolah (PKS) --- */
+        #pks {
+            background-color: #fce4ec; /* Pink muda pucat */
+        }
+
+        .pks-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .pks-card {
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            overflow: hidden;
+            position: relative;
+            height: 350px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .pks-card-bg {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .pks-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            padding: 20px 10px 10px;
+            color: var(--text-light);
+            transition: background 0.5s;
+        }
+
+        .pks-card-overlay h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        /* Hover: Ganti Gambar dan Teks */
+        /* Animasi akan ditangani oleh JS */
+
+        /* --- Section 5: Struktur Organisasi --- */
+        #struktur {
+            background-color: var(--bg-white);
+        }
+
+        .struktur-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .struktur-text {
+            flex: 1;
+        }
+
+        .struktur-image {
+            flex: 0 0 350px;
+            height: 350px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .struktur-image:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .struktur-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* --- Section 6: Fasilitas Sekolah --- */
+        #fasilitas {
+            background-color: #e3f2fd; /* Biru muda pucat */
+        }
+
+        .fasilitas-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .fasilitas-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            position: relative;
+            height: 250px;
+        }
+
+        .fasilitas-card-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s;
+        }
+
+        .fasilitas-card:hover .fasilitas-card-img {
+            transform: scale(1.1);
+        }
+
+        .fasilitas-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+            color: var(--text-light);
+            transition: background 0.5s;
+        }
+
+        .fasilitas-overlay h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .fasilitas-description {
+            font-size: 0.9rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            opacity: 0;
+        }
+
+        .fasilitas-card:hover .fasilitas-description {
+            max-height: 100px;
+            opacity: 1;
+        }
+
+        /* --- Section 7: Selayang Pandang (Gallery) --- */
+        #gallery {
+            background-color: var(--bg-white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+            cursor: pointer;
+            height: 200px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- Section 8: Prestasi Siswa (Carousel) --- */
+        #prestasi {
+            background-color: #fff3e0; /* Oranye muda pucat */
+        }
+        
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            height: 400px; 
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            padding: 40px;
+            color: var(--text-light);
+        }
+
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4);
+            z-index: 1;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            gap: 30px;
+            max-width: 800px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .slide-text {
+            flex: 1;
+        }
+
+        .slide-text h3 {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+        
+        .slide-text h4 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .slide-image {
+            flex: 0 0 150px;
+            height: 150px;
+            overflow: hidden;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .slide-image.circle {
+            border-radius: 50%;
+        }
+
+        .slide-image.rounded-square {
+            border-radius: 15px;
+        }
+
+        .slide-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: var(--primary-color);
+        }
+
+        /* --- Section 9: Berita Sekolah --- */
+        #berita {
+            background-color: var(--bg-white);
+        }
+
+        .berita-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .berita-card {
+            text-align: center;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow-light);
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+
+        .berita-card:hover {
+            background-color: #e0f7fa; /* Hijau pirus muda */
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 77, 64, 0.2);
+        }
+
+        .berita-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .berita-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .berita-card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* --- Section 10: Hubungi Kami --- */
+        #kontak {
+            background-color: #f1f8e9; /* Hijau kekuningan muda */
+        }
+
+        .kontak-content {
+            display: flex;
+            gap: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+        }
+
+        .map-container {
+            flex: 1;
+            height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left p {
+            margin-bottom: 5px;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            margin-left: 15px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsiveness (Media Queries) --- */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px; /* Sesuaikan dengan tinggi navbar */
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-white);
+                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 15px 20px;
+                border-bottom: 1px solid #eee;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .header-content {
+                padding: 0 20px;
+            }
+
+            #welcome-text {
+                font-size: 2.5rem;
+            }
+
+            #tagline {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .sambutan-content, .struktur-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .kepsek-photo, .struktur-image {
+                width: 100%;
+                max-width: 300px;
+                height: 300px;
+            }
+
+            .tentang-grid, .profil-grid, .pks-grid, .fasilitas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .berita-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .kontak-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #welcome-text {
+                font-size: 2rem;
+            }
+
+            #tagline {
+                font-size: 1rem;
+            }
+
+            .tentang-grid, .profil-grid, .pks-grid, .fasilitas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid, .berita-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-left {
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Modal / Lightbox untuk Gallery */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            animation: zoom 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)} 
+            to {transform:scale(1)}
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+        /* Atur Grid agar kartu sejajar */
+.profil-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.profil-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    /* Tinggi kartu bisa diatur atau dibiarkan mengikuti gambar */
+    height: 300px; 
+}
+
+/* Kunci agar gambar tidak terpotong (contain) atau memenuhi area (cover) */
+.card-img {
+    width: 100%;
+    height: 100%;
+    /* Gunakan 'contain' agar gambar UTUH 100% (mungkin ada sisa ruang kosong) */
+    /* Gunakan 'cover' agar gambar PENUH (mungkin ada bagian terpotong) */
+    object-fit: contain; 
+    background-color: #f0f0f0; /* Warna latar jika ada sisa ruang kosong */
+}
+
+.profil-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.6); /* Overlay gelap agar teks terbaca */
+    color: white;
+    z-index: 2;
+}
+
+.cta-btn {
+    display: inline-block; /* Kunci agar margin berfungsi */
+    margin-top: 20px;      /* Jarak ke atas */
+    
+    /* Tambahan opsional agar tombol lebih cantik */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* --- FOOTER GENERAL --- */
+.footer {
+    /* Atur warna latar belakang dan teks dasar */
+    background-color: #2c3e50; /* Contoh: Warna Biru Tua/Gelap */
+    color: #ecf0f1; /* Teks Putih Pudar */
+    padding: 30px 0;
+}
+
+/* --- CONTAINER (Pembungkus Utama) --- */
+.footer .container {
+    /* Pastikan container tetap di tengah halaman */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* --- FOOTER CONTENT (Isi Utama) --- */
+.footer-content {
+    /* Menggunakan Flexbox untuk menata elemen anak (kiri dan sosial) */
+    display: flex;
+    flex-direction: column; /* Tumpuk item secara vertikal */
+    align-items: center; /* Pusatkan item secara horizontal (kunci untuk rata tengah) */
+    text-align: center;    /* Agar teks di dalam elemen anak juga rata tengah */
+    gap: 20px; /* Jarak antara blok alamat dan blok sosial */
+    padding-bottom: 20px;
+    border-bottom: 1px solid #34495e; /* Garis pemisah */
+}
+
+/* Mengatasi Pindahnya Rata Kiri di footer-left */
+.footer-left {
+    max-width: 600px; /* Batasi lebar agar alamat tidak terlalu panjang */
+    /* text-align sudah diatur oleh .footer-content */
+}
+.footer-left p {
+    margin: 5px 0;
+}
+.footer-left strong {
+    font-size: 1.1em;
+}
+
+/* --- SOCIAL LINKS --- */
+.social-links {
+    /* Agar ikon-ikon tetap berjejer di tengah */
+    display: flex;
+    gap: 15px; /* Jarak antar ikon */
+}
+.social-links a {
+    color: #ecf0f1;
+    font-size: 1.5em; /* Ukuran ikon (jika menggunakan font icon) */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.social-links a:hover {
+    color: #3498db; /* Efek hover biru cerah */
+}
+
+/* --- COPYRIGHT (Hak Cipta) --- */
+.copyright {
+    /* Kunci: Pusatkan Teks Hak Cipta */
+    text-align: center; 
+    padding-top: 20px;
+    font-size: 0.9em;
+    color: #bdc3c7;
+}
+
+/* --- MEDIA QUERY (Opsional: Jika tampilan di desktop ingin melebar) --- */
+@media (min-width: 768px) {
+    .footer-content {
+        /* Kembalikan ke susunan horizontal jika layar cukup lebar */
+        flex-direction: row; 
+        
+        /* Jaga agar tetap ada di tengah, tapi beri jarak pinggir */
+        justify-content: space-around; 
+        
+        /* Hapus text-align center agar alamat bisa memanfaatkan lebar */
+        /* text-align: left; */ 
+    }
+    
+    .footer-left {
+        /* Atur ulang lebar */
+        max-width: 40%;
+        text-align: left;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="container navbar-content">
+            <div class="logo">
+                <a href="#header">
+                    <img src="https://i.imgur.com/qGnV6MT.png" alt="Logo Sekolah">
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="https://sites.google.com/view/sasorbaru/tenaga-pendidik" target="_blank">Tenaga Pendidik</a></li>
+                <li><a href="https://sites.google.com/view/sasorbaru/wali-kelas" target="_blank">Wali Kelas</a></li>
+                <li><a href="https://sites.google.com/view/sasorbaru/berita-sekolah" target="_blank">Berita Sekolah</a></li>
+                <li><a href="https://sites.google.com/view/sasorbaru/akademik" target="_blank">Berita Akademik</a></li>
+                <li><a href="https://sites.google.com/view/sasorbaru/guru-purna-tugas" target="_blank">Guru Purna Tugas</a></li>
+                <li><a href="https://web.whatsapp.com/send?phone=6288220483119" target="_blank">Hubungi Kami</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="header" id="header">
+        <div class="header-content">
+            <h1 id="welcome-text"></h1>
+            <p id="tagline"></p>
+            <div class="cta-buttons">
+                <a href="https://sites.google.com/view/sasorbaru/struktur-organisasi" target="_blank" class="cta-btn">Struktur Organisasi</a>
+                <a href="https://sites.google.com/view/sasorbaru/sites-guru" target="_blank" class="cta-btn">Sites Guru</a>
+                <a href="https://sites.google.com/view/sasorbaru/perpustakaan" target="_blank" class="cta-btn">Perpustakaan SaSoR</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="sambutan" class="section">
+        <div class="container">
+            <h2>Sambutan Kepala Sekolah</h2>
+            <div class="sambutan-content">
+                <a href="https://sites.google.com/view/sasorbaru/sambutan-kepala-sekolah" target="_blank" class="kepsek-photo">
+                    <img src="https://i.imgur.com/LVOi9hS.jpeg" alt="Foto Kepala Sekolah">
+                </a>
+                <div class="sambutan-text">
+                    <h3>Selamat Datang di Website Resmi SMPN 1 Soreang</h3>
+                    <p>Selamat datang di website SMP Negeri 1 Soreang Kabupaten Bandung. Merupakan suatu kehormatan bagi kami atas kunjungan anda. Kami berharap  anda menjadi mitra untuk dapat memanfaatkan website dalam  memperoleh informasi dari kami dan saling berbagi dengan segenap keluarga besar  SMP Negeri 1 Soreang Kabupaten Bandung</p>
+                                   </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tentang" class="section">
+        <div class="container">
+            <h2>Tentang Sekolah</h2>
+            <div class="tentang-grid">
+                <a class="tentang-card" href="https://sites.google.com/view/sasorbaru/logo-smpn-1-soreang" target="_blank">
+                    <img src="https://i.imgur.com/qGnV6MT.png" alt="Logo Sekolah">
+                    <h4>Logo Sekolah</h4>
+                    <p>Rincian tentang makna yang terkandung dalam logo sekolah</p>
+                </a>
+                <a class="tentang-card" href="https://sites.google.com/view/sasorbaru/sejarah-sekolah" target="_blank">
+                    <img src="https://i.imgur.com/lEbDoM3.jpeg" alt="Sejarah Sekolah">
+                    <h4>Sejarah Sekolah</h4>
+                    <p>Perjalanan panjang dan inspiratif SMPN 1 Soreang sejak didirikan.</p>
+                </a>
+                <a class="tentang-card" href="https://sites.google.com/view/sasorbaru/kepala-sekolah-dari-masa-ke-masa" target="_blank">
+                    <img src="https://i.imgur.com/L1hM2mx.jpeg" alt="Kepala Sekolah dari Masa ke Masa">
+                    <h4>Kepala Sekolah dari Masa ke Masa</h4>
+                    <p>Daftar pemimpin yang penuh dedikasi dan visioner telah membentuk sekolah ini</p>
+                </a>
+                <a class="tentang-card" href="https://sites.google.com/view/visi-misi-sasor/visi-dan-misi" target="_blank">
+                    <img src="https://i.imgur.com/tmUCNof.jpeg" alt="Visi dan Misi">
+                    <h4>Visi dan Misi</h4>
+                    <p>Tujuan dan nilai-nilai inti yang kami pegang teguh</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="profil-sekolah" class="section">
+    <div class="container">
+        <h2>Data Profil Sekolah</h2>
+        <div class="profil-grid">
+            
+            <div class="profil-card" data-number="33" data-label="Rombongan belajar">
+                <img src="https://i.imgur.com/tr2gxa7.jpeg" alt="Rombongan belajar" class="card-img">
+                <div class="profil-card-content">
+                    <span class="number"></span>
+                    <span class="label"></span>
+                </div>
+            </div>
+
+            <div class="profil-card" data-number="1450" data-label="Peserta Didik">
+                <img src="https://i.imgur.com/q2euvyO.jpeg" alt="Peserta Didik" class="card-img">
+                <div class="profil-card-content">
+                    <span class="number"></span>
+                    <span class="label"></span>
+                </div>
+            </div>
+
+            <div class="profil-card" data-number="66" data-label="Tenaga Pendidik">
+                <img src="https://i.imgur.com/iSvZlS2.jpeg" alt="Tenaga Pendidik" class="card-img">
+                <div class="profil-card-content">
+                    <span class="number"></span>
+                    <span class="label"></span>
+                </div>
+            </div>
+
+            <div class="profil-card" data-number="98%" data-label="Melanjutkan ke SMA/SMK">
+                <img src="https://i.imgur.com/mZSz40n.jpeg" alt="Lulusan" class="card-img">
+                <div class="profil-card-content">
+                    <span class="number"></span>
+                    <span class="label"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    <section id="pks" class="section">
+        <div class="container">
+            <h2>Wakil Kepala Sekolah</h2>
+            <div class="pks-grid">
+                <a class="pks-card" href="https://sites.google.com/view/sasorbaru/wakil-kepala-sekolah/kurikulum" target="_blank"
+                   data-default-img="https://i.imgur.com/VhrZlxD.jpeg" data-default-name="Dina Srinurzaqilah, S.Pd"
+                   data-hover-img="https://i.imgur.com/0SRl7Cw.jpeg" data-hover-name="Hj. Rina Hertati, S.Pd">
+                    <div class="pks-card-bg" style="background-image: url('https://i.imgur.com/VhrZlxD.jpeg');"></div>
+                    <div class="pks-card-overlay">
+                        <h4>PKS Kurikulum</h4>
+                        <p class="pks-name">Dina Srinurzaqilah, S.Pd</p>
+                    </div>
+                </a>
+                <a class="pks-card" href="https://sites.google.com/view/sasorbaru/wakil-kepala-sekolah/pks-kesiswaan" target="_blank"
+                   data-default-img="https://i.imgur.com/7FUKrZt.jpeg" data-default-name="Jajang Hermawan, M.Pd"
+                   data-hover-img="https://i.imgur.com/ndMtRvS.png" data-hover-name="Ayom Ahmad, S.Pd">
+                    <div class="pks-card-bg" style="background-image: url('https://i.imgur.com/7FUKrZt.jpeg');"></div>
+                    <div class="pks-card-overlay">
+                        <h4>PKS Kesiswaan</h4>
+                        <p class="pks-name">Jajang Hermawan, M.Pd</p>
+                    </div>
+                </a>
+                <a class="pks-card" href="https://sites.google.com/view/sasorbaru/wakil-kepala-sekolah/sarana-prasarana" target="_blank"
+                   data-default-img="https://i.imgur.com/qdzpm4W.jpeg" data-default-name="Dinnah Suparthy, S.Si"
+                   data-hover-img="https://i.imgur.com/6faoByG.png" data-hover-name="Drs. Miftahudin Djawahir">
+                    <div class="pks-card-bg" style="background-image: url('https://i.imgur.com/qdzpm4W.jpeg');"></div>
+                    <div class="pks-card-overlay">
+                        <h4>PKS Sarpras</h4>
+                        <p class="pks-name">Dinnah Suparthy, S.Si</p>
+                    </div>
+                </a>
+                <a class="pks-card" href="https://sites.google.com/view/sasorbaru/wakil-kepala-sekolah/humas" target="_blank"
+                   data-default-img="https://i.imgur.com/UCAF1vv.jpeg" data-default-name="Drs. Usup Supriadin"
+                   data-hover-img="https://i.imgur.com/r2j3KGW.jpeg" data-hover-name="Rica Rostiati N, S.Pd">
+                    <div class="pks-card-bg" style="background-image: url('https://i.imgur.com/UCAF1vv.jpeg');"></div>
+                    <div class="pks-card-overlay">
+                        <h4>PKS Humas</h4>
+                        <p class="pks-name">Drs. Usup Supriadin</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="struktur" class="section">
+        <div class="container">
+            <h2>Struktur Organisasi Sekolah</h2>
+            <div class="struktur-content">
+                <a href="https://sites.google.com/view/sasorbaru/struktur-organisasi" target="_blank" class="struktur-image">
+                    <img src="https://i.imgur.com/RupMjgP.png" alt="Bagan Struktur Organisasi">
+                </a>
+                <div class="struktur-text">
+                    <p>Struktur organisasi SMP Negeri 1 Soreang adalah susunan hierarki yang menggambarkan hubungan antara kepala sekolah, wakil kepala sekolah, guru, staf administrasi, dan komite sekolah. Struktur ini memastikan alur kerja yang jelas, pembagian tugas yang efektif, dan kolaborasi yang harmonis dalam mencapai visi dan misi sekolah.</p>
+                    <a href="https://sites.google.com/view/sasorbaru/struktur-organisasi" target="_blank" class="cta-btn" style="margin-top: 20px;">Lihat Detail Struktur</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="fasilitas" class="section">
+        <div class="container">
+            <h2>Fasilitas Sekolah</h2>
+            <div class="fasilitas-grid">
+                <div class="fasilitas-card">
+                    <div class="fasilitas-card-img" style="background-image: url('https://i.imgur.com/D1Of3wk.jpeg');"></div>
+                    <div class="fasilitas-overlay">
+                        <h4>Laboratorium IPA</h4>
+                        <p class="fasilitas-description">Tempat eksplorasi ilmu pengetahuan alam dengan peralatan lengkap.</p>
+                    </div>
+                </div>
+                <div class="fasilitas-card">
+                    <div class="fasilitas-card-img" style="background-image: url('https://i.imgur.com/r4nH4Yg.jpeg');"></div>
+                    <div class="fasilitas-overlay">
+                        <h4>Perpustakaan SaSoR</h4>
+                        <p class="fasilitas-description">Koleksi buku memadai dan ruang baca yang tenang dan nyaman untuk literasi.</p>
+                    </div>
+                </div>
+                <div class="fasilitas-card">
+                    <div class="fasilitas-card-img" style="background-image: url('https://i.imgur.com/xv0T5lW.jpeg');"></div>
+                    <div class="fasilitas-overlay">
+                        <h4>Mesjid Sekolah</h4>
+                        <p class="fasilitas-description">Pusat kegiatan keagamaan dan pembinaan karakter spiritual siswa.</p>
+                    </div>
+                </div>
+                <div class="fasilitas-card">
+                    <div class="fasilitas-card-img" style="background-image: url('https://i.imgur.com/uEqTyBd.jpeg');"></div>
+                    <div class="fasilitas-overlay">
+                        <h4>Aula Serbaguna</h4>
+                        <p class="fasilitas-description">Fasilitas utama untuk acara besar, seminar, dan pertemuan wali murid.</p>
+                    </div>
+                </div>
+                <div class="fasilitas-card">
+                    <div class="fasilitas-card-img" style="background-image: url('https://i.imgur.com/Z9wLH2v.jpeg');"></div>
+                    <div class="fasilitas-overlay">
+                        <h4>Ruang Multimedia</h4>
+                        <p class="fasilitas-description">Dilengkapi proyektor, komputer dan smart TV untuk pembelajaran berbasis digital.</p>
+                    </div>
+                </div>
+                <div class="fasilitas-card">
+                    <div class="fasilitas-card-img" style="background-image: url('https://i.imgur.com/VwhbBs9.jpeg');"></div>
+                    <div class="fasilitas-overlay">
+                        <h4>Lapangan Olah Raga</h4>
+                        <p class="fasilitas-description">Area luas untuk kegiatan fisik, basket, voli, dan upacara.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2>Selayang Pandang SMPN 1 Soreang</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://i.imgur.com/ZgbgusG.jpeg" alt="Gerbang Dalam"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/c9FfHJI.jpeg" alt="Podium Upacara"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/Ovsmg1T.jpeg" alt="Perpustakaan"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/T1CQaBi.jpeg" alt="Taman Depan Kelas"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/co7mP7p.jpeg" alt="Taman Depan"></div>
+            </div>
+        </div>
+    </section>
+
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <section id="prestasi" class="section">
+        <div class="container">
+            <h2>Prestasi Siswa</h2>
+            <div class="carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <div class="slide-bg" style="background-image: url('https://i.imgur.com/8qS9nu2.jpeg');"></div>
+                        <div class="slide-content">
+                            <div class="slide-text">
+                                <h3>THANIA DILAN SYAHPUTRI</h3>
+                                <h4>Olimpiade Olahraga Siswa Nasional | Juara 1</h4>
+                                <p>Emas Cabang Renang Putri Kabupaten/Kota Tahun 2024</p>
+                            </div>
+                            <div class="slide-image circle">
+                                <img src="https://i.imgur.com/7AOmQxF.jpeg" alt="Foto Thania Dilan Syahputri">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="slide-bg" style="background-image: url('https://i.imgur.com/FEUrnmY.jpeg');"></div>
+                        <div class="slide-content">
+                            <div class="slide-text">
+                                <h3>THANIA DILAN SYAHPUTRI</h3>
+                                <h4>Olimpiade Olahraga Siswa Nasional | Perak</h4>
+                                <p>Perak Cabang RENANG 50 METER GAYA KUPU PUTRI Provinsi Tahun 2023</p>
+                            </div>
+                            <div class="slide-image circle">
+                                <img src="https://i.imgur.com/BhBGMrX.jpeg" alt="Foto Thania Dilan Syahputri">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="slide-bg" style="background-image: url('https://i.imgur.com/8xj9jlL.jpeg');"></div>
+                        <div class="slide-content">
+                            <div class="slide-text">
+                                <h3>ZEIN YUDHISTIRA</h3>
+                                <h4>Festival Lomba Seni Siswa Nasional | Penghargaan Khusus</h4>
+                                <p>Cabang Kreativitas Musik Tradisi (Daring) Kabupaten/Kota Tahun 2023</p>
+                            </div>
+                            <div class="slide-image rounded-square">
+                                <img src="https://i.imgur.com/HJWnu88.jpeg" alt="Foto Zein Yudhistira">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-dots" id="carouselDots">
+                <span class="dot active" data-slide-index="0"></span>
+                <span class="dot" data-slide-index="1"></span>
+                <span class="dot" data-slide-index="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="berita" class="section">
+        <div class="container">
+            <h2>Pusat Informasi</h2>
+            <div class="berita-grid">
+                <a class="berita-card" href="https://sites.google.com/view/sasorbaru/berita-sekolah" target="_blank">
+                    <img src="https://i.imgur.com/w3itR4R.png" alt="Berita Sekolah">
+                    <h4>Berita Sekolah</h4>
+                    <p>Kumpulan berita dan informasi aktivitas Guru dan Siswa terkait berbagai program kebijakan dan kegiatan sekolah.</p>
+                </a>
+                <a class="berita-card" href="https://sites.google.com/view/sasorbaru/akademik" target="_blank">
+                    <img src="https://i.imgur.com/LMOywuB.png" alt="Kegiatan Akademik">
+                    <h4>Kegiatan Akademik</h4>
+                    <p>Aktivitas yang berfokus pada guru dan siswa, baik yang terstruktur dalam kurikulum maupun pengembangan di luar jam pelajaran.</p>
+                </a>
+                <a class="berita-card" href="https://sites.google.com/view/sasorbaru/kesiswaan" target="_blank">
+                    <img src="https://i.imgur.com/Jynt1Ul.png" alt="Berita Kesiswaan">
+                    <h4>Berita Kesiswaan</h4>
+                    <p>Aktivitas yang berfokus pada siswa, yang diselenggarakan sekolah untuk mengembangkan bakat, minat, kepribadian, dan kemandirian siswa.</p>
+                </a>
+                <a class="berita-card" href="https://sites.google.com/view/sasorbaru/tulisan-guru" target="_blank">
+                    <img src="https://i.imgur.com/3eSCHPC.jpeg" alt="Tulisan Guru">
+                    <h4>Tulisan Guru</h4>
+                    <p>"Semua orang akan mati kecuali karyanya, maka tulislah sesuatu yang akan membahagiakan dirimu di akhirat kelak". - Ali bin Abi Thalib.</p>
+                </a>
+                <a class="berita-card" href="https://sites.google.com/view/sasorbaru/tulisan-siswa" target="_blank">
+                    <img src="https://i.imgur.com/tNn7i5S.jpeg" alt="Tulisan Siswa">
+                    <h4>Tulisan Siswa</h4>
+                    <p>Halaman ini sebagai tempat kreativitas siswa untuk mengembangkan potensi diri, ketrampilan dan kreativitasnya, dan menjadi media untuk saling berbagi.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="section">
+        <div class="container">
+            <h2>Hubungi Kami</h2>
+            <div class="kontak-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <a href="https://www.google.com/maps/@-7.0256327,107.5245833,3a,75y,312.15h,94.23t/data=!3m7!1e1!3m5!1sHb44kBQPFclKclklt56NpQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-4.229553876242562%26panoid%3DHb44kBQPFclKclklt56NpQ%26yaw%3D312.1484961130849!7i16384!8i8192?authuser=0&entry=ttu&g_ep=EgoyMDI1MTIwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank">Jl. Raya Soreang - Kopo No.12-6, Pamekaran, Kec. Soreang, Kabupaten Bandung, Jawa Barat 40912</a>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="phone"></i>
+                        <a href="https://wa.me/6288220483119" target="_blank">(+62) 882-2048-3119</a>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        <a href="mailto:dinasasor@gmail.com">dinasasor@gmail.com</a>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.073400508752!2d107.50284531477543!3d-7.097063494902181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68ee572a1e6211%3A0xf659695d861f185c!2sSMP%20Negeri%201%20Soreang!5e0!3m2!1sen!2sid!4v1634812800000!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p><strong>SMPN 1 Soreang</strong></p>
+                    <p>Jl. Raya Soreang - Kopo No.12-6, Pamekaran, Kec. Soreang, Kabupaten Bandung, Jawa Barat 40912</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://web.facebook.com/smpn1soreang/?locale=id_ID&_rdc=1&_rdr#" target="_blank"><i data-lucide="facebook"></i></a>
+                    <a href="https://www.instagram.com/smpn1soreang.official/?hl=en" target="_blank"><i data-lucide="instagram"></i></a>
+                    <a href="https://www.youtube.com/@smpn1soreangofficial" target="_blank"><i data-lucide="youtube"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; <span id="currentYear"></span> Tim ICT SaSoR. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Inisialisasi Lucide Icons
+        lucide.createIcons();
+
+        // --- JavaScript untuk Animasi Header ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const welcomeTextElement = document.getElementById('welcome-text');
+            const taglineElement = document.getElementById('tagline');
+            const welcomeMessage = "Selamat datang di SMPN 1 Soreang";
+            const tagline = "Lingkungan belajar yang nyaman untuk mencetak generasi berprestasi";
+
+            // Animasi Ketik (Typing Effect)
+            function typeText(element, text, delay, callback) {
+                let i = 0;
+                element.textContent = '';
+                const interval = setInterval(() => {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(interval);
+                        if (callback) callback();
+                    }
+                }, 50); // Kecepatan ketik
+            }
+
+            // Memulai animasi
+            setTimeout(() => {
+                welcomeTextElement.classList.add('fade-in');
+                welcomeTextElement.style.opacity = 1; // Pastikan terlihat
+                typeText(welcomeTextElement, welcomeMessage, 0, () => {
+                    // Setelah teks pertama selesai, tampilkan teks kedua
+                    setTimeout(() => {
+                        taglineElement.classList.add('fade-in');
+                        taglineElement.textContent = tagline; // Tampilkan langsung sesuai permintaan
+                    }, 500); // Jeda 0.5 detik setelah teks pertama
+                });
+            }, 1000); // Jeda awal 1 detik
+
+            // --- Navbar Toggle ---
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            const navbar = document.getElementById('navbar');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+
+            // Efek Animasi Navbar (Shrink/Background change on scroll)
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                    navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
+                } else {
+                    navbar.style.backgroundColor = 'var(--bg-white)';
+                    navbar.style.boxShadow = 'var(--shadow-light)';
+                }
+            });
+
+            // --- Footer Tahun ---
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // --- PKS Hover Effect ---
+            const pksCards = document.querySelectorAll('.pks-card');
+            pksCards.forEach(card => {
+                const defaultImg = card.getAttribute('data-default-img');
+                const defaultName = card.getAttribute('data-default-name');
+                const hoverImg = card.getAttribute('data-hover-img');
+                const hoverName = card.getAttribute('data-hover-name');
+                const bgElement = card.querySelector('.pks-card-bg');
+                const nameElement = card.querySelector('.pks-name');
+
+                card.addEventListener('mouseenter', () => {
+                    bgElement.style.opacity = 0;
+                    setTimeout(() => {
+                        bgElement.style.backgroundImage = `url('${hoverImg}')`;
+                        nameElement.textContent = hoverName;
+                        bgElement.style.opacity = 1;
+                    }, 500); // Waktu transisi opacity
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    bgElement.style.opacity = 0;
+                    setTimeout(() => {
+                        bgElement.style.backgroundImage = `url('${defaultImg}')`;
+                        nameElement.textContent = defaultName;
+                        bgElement.style.opacity = 1;
+                    }, 500); // Waktu transisi opacity
+                });
+            });
+
+            // --- Profil Sekolah (Statistik) Hover Effect ---
+            const profilCards = document.querySelectorAll('.profil-card');
+            profilCards.forEach(card => {
+                const numberElement = card.querySelector('.number');
+                const labelElement = card.querySelector('.label');
+                const number = card.getAttribute('data-number');
+                const label = card.getAttribute('data-label');
+
+                card.addEventListener('mouseenter', () => {
+                    numberElement.textContent = number;
+                    labelElement.textContent = label;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    numberElement.textContent = '';
+                    labelElement.textContent = '';
+                });
+            });
+
+            // --- Carousel Prestasi ---
+            const carouselTrack = document.getElementById('carouselTrack');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.dot');
+            let currentIndex = 0;
+            const slideWidth = slides.length > 0 ? slides[0].clientWidth : 0;
+            const totalSlides = slides.length;
+
+            function goToSlide(index) {
+                if (totalSlides === 0) return;
+                carouselTrack.style.transform = `translateX(-${index * 100}%)`;
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+                currentIndex = index;
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                goToSlide(currentIndex);
+            }
+
+            // Auto-play
+            let slideInterval = setInterval(nextSlide, 5000); // Ganti slide setiap 5 detik
+
+            // Event listener untuk dots
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    clearInterval(slideInterval); // Hentikan auto-play saat diklik
+                    const index = parseInt(this.getAttribute('data-slide-index'));
+                    goToSlide(index);
+                    slideInterval = setInterval(nextSlide, 5000); // Lanjutkan auto-play
+                });
+            });
+
+            // Set initial slide
+            if (totalSlides > 0) {
+                goToSlide(0);
+            }
+            
+            // --- Gallery Lightbox/Modal ---
+            const modal = document.getElementById("myModal");
+            const modalImg = document.getElementById("img01");
+            const galleryItems = document.querySelectorAll('.gallery-item img');
+            const span = document.getElementsByClassName("close")[0];
+
+            galleryItems.forEach(img => {
+                img.addEventListener('click', function(){
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                });
+            });
+
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+
+            modal.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
